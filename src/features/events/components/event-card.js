@@ -9,8 +9,7 @@ const StyledCard = styled(Card)`
 `;
 
 const CardTitle = styled.View`
-  margin-left: 8px;
-  margin-top: 8px;
+  margin: 8px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -26,8 +25,9 @@ const AvatarImage = styled(Avatar.Image)`
 `;
 
 const CardCover = styled(Card.Cover)`
-  padding: 10px;
   background-color: white;
+  height: 500px;
+  border-radius: 0;
 `;
 
 const CardContent = styled(Card.Content)`
