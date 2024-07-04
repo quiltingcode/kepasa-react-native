@@ -2,7 +2,7 @@ import React from "react";
 import { Text, StyleSheet, Image, View } from "react-native";
 import { Avatar, Card } from "react-native-paper";
 
-export const EventInfo = ({ event = {} }) => {
+export const EventCard = ({ event = {} }) => {
   const {
     id,
     owner = "Kelly",
@@ -23,15 +23,21 @@ export const EventInfo = ({ event = {} }) => {
 
   return (
     <Card elevation={5} style={styles.card}>
-      <Avatar.Image
-        size={32}
-        source={{
-          uri: profile_image,
-        }}
-        style={styles.avatar}
-      />
-      <Text>{owner}</Text>
-      <Text>{updated_at}</Text>
+      <View style={styles.cardTitle}>
+        <View style={styles.leftContainer}>
+          <Avatar.Image
+            size={32}
+            source={{
+              uri: profile_image,
+            }}
+            style={styles.avatar}
+          />
+          <Text>{owner}</Text>
+        </View>
+        <View style={styles.rightContainer}>
+          <Text>{updated_at}</Text>
+        </View>
+      </View>
 
       <Card.Cover key={title} source={{ uri: image }} style={styles.cover} />
       <Card.Content>
@@ -50,5 +56,13 @@ export const EventInfo = ({ event = {} }) => {
 const styles = StyleSheet.create({
   card: { backgroundColor: "white" },
   cover: { padding: 10, backgroundColor: "white" },
-  avatar: { margin: 5 },
+  avatar: { marginRight: 8 },
+  cardTitle: {
+    padding: 5,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  leftContainer: { flexDirection: "row", alignItems: "center" },
+  rightContainer: { marginRight: 8 },
 });

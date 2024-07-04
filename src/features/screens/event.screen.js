@@ -1,7 +1,7 @@
 import React from "react";
 import { Searchbar } from "react-native-paper";
 import { StatusBar, StyleSheet, SafeAreaView, Text, View } from "react-native";
-import { EventInfo } from "../events/components/event-info-component";
+import { EventCard } from "../events/components/event-card";
 
 export const EventsScreen = () => (
   <SafeAreaView style={styles.container}>
@@ -9,7 +9,7 @@ export const EventsScreen = () => (
       <Searchbar />
     </View>
     <View style={styles.list}>
-      <EventInfo />
+      <EventCard />
     </View>
   </SafeAreaView>
 );
