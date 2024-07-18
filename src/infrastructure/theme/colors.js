@@ -1,8 +1,11 @@
 export const colors = {
   brand: {
-    primary: "#2182BD",
-    secondary: "#5282BD",
-    muted: "#C6DAF7",
+    veraBlue: "#7CC4D9",
+    secondaryBlue: "#65D5DA",
+    veraTurquoise: "#67E4CB",
+    matchinGreen: "#89F0AF",
+    veraYellow: "#F9A82B",
+    mutedYellow: "#F9F871",
   },
   ui: {
     primary: "#262626",

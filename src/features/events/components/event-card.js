@@ -5,11 +5,11 @@ import { StatusBar, StyleSheet, SafeAreaView, Text, View } from "react-native";
 
 // Styled components
 const StyledCard = styled(Card)`
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const CardTitle = styled.View`
-  margin: 8px;
+  margin: ${(props) => props.theme.space[3]};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -21,17 +21,17 @@ const OwnerContainer = styled.View`
 `;
 
 const AvatarImage = styled(Avatar.Image)`
-  margin-right: 8px;
+  margin-right: ${(props) => props.theme.space[3]};
 `;
 
 const CardCover = styled(Card.Cover)`
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.bg.primary};
   height: 500px;
   border-radius: 0;
 `;
 
 const CardContent = styled(Card.Content)`
-  padding: 5px;
+  padding: ${(props) => props.theme.space[3]};
   align-items: center;
 `;
 
@@ -41,7 +41,9 @@ const EventInfo = styled.View`
 `;
 
 const UpdatedText = styled.Text`
-  margin-right: 8px;
+  margin-right: ${(props) => props.theme.space[3]};
+  color: ${(props) => props.theme.colors.ui.primary};
+  font-family: ${(props) => props.theme.fonts.body};
 `;
 
 export const EventCard = ({ event = {} }) => {

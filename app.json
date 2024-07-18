@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "focustime",
+    "name": "kepasa",
     "slug": "snack-80efbcf0-32bb-4a2a-83e2-17597ea40836",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -25,6 +25,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
