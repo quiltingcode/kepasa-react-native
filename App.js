@@ -9,6 +9,11 @@ import {
   Raleway_400Regular,
 } from "@expo-google-fonts/raleway";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+import {
+  useFonts as useOswald,
+  Oswald_400Regular,
+  Oswald_500Medium,
+} from "@expo-google-fonts/oswald";
 
 export default function App() {
   const [ralewayLoaded] = useRaleway({
@@ -17,8 +22,12 @@ export default function App() {
   const [latoLoaded] = useLato({
     Lato_400Regular,
   });
+  const [oswaldLoaded] = useOswald({
+    Oswald_400Regular,
+    Oswald_500Medium,
+  });
 
-  if (!ralewayLoaded || !latoLoaded) {
+  if (!ralewayLoaded || !latoLoaded || !oswaldLoaded) {
     return null;
   }
 
