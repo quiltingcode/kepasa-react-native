@@ -160,8 +160,8 @@ export const EventCard = ({ event = {} }) => {
         </View>
         <EventInfo>
           <RatingRow>
-            {ratingArray.map(() => (
-              <SvgXml xml={star} width={20} height={20} />
+            {ratingArray.map((index) => (
+              <SvgXml xml={star} width={20} height={20} key={index} />
             ))}
           </RatingRow>
         </EventInfo>
