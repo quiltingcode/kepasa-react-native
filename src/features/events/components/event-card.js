@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import { Avatar, Card, IconButton, MD3Colors } from "react-native-paper";
 import { StatusBar, StyleSheet, SafeAreaView, Text, View } from "react-native";
 import { SvgXml } from "react-native-svg";
+import { Spacer } from "../components/spacer/spacer.component";
 import star from "../../../../assets/star";
 import Svg, { Use, Image } from "react-native-svg";
 
@@ -159,11 +160,14 @@ export const EventCard = ({ event = {} }) => {
           <Text># {tags}</Text>
         </View>
         <EventInfo>
+          <Spacer position="bottom" size="small">
           <RatingRow>
             {ratingArray.map((index) => (
               <SvgXml xml={star} width={20} height={20} key={index} />
             ))}
           </RatingRow>
+          </Spacer>
+         
         </EventInfo>
       </CardContent>
     </StyledCard>
