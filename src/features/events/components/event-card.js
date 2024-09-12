@@ -1,90 +1,23 @@
 import React from "react";
 import styled from "styled-components/native";
 import { Avatar, Card, IconButton, MD3Colors } from "react-native-paper";
-import { StatusBar, StyleSheet, SafeAreaView, Text, View } from "react-native";
+import { StatusBar, StyleSheet, SafeAreaView, View } from "react-native";
 import { SvgXml } from "react-native-svg";
 import { Spacer } from "../components/spacer/spacer.component";
+import { Text } from "../components/typography/text.component";
 import star from "../../../../assets/star";
 import Svg, { Use, Image } from "react-native-svg";
-
-// Styled components
-const StyledCard = styled(Card)`
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`;
-
-const CardTitle = styled.View`
-  margin: ${(props) => props.theme.space[3]};
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const OwnerContainer = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
-const AvatarImage = styled(Avatar.Image)`
-  margin-right: ${(props) => props.theme.space[3]};
-`;
-
-const CardCover = styled(Card.Cover)`
-  background-color: ${(props) => props.theme.colors.bg.primary};
-  height: 500px;
-  border-radius: 0;
-`;
-
-const CardContent = styled(Card.Content)`
-  padding-left: ${(props) => props.theme.space[3]};
-  padding-right: ${(props) => props.theme.space[3]};
-  align-items: center;
-`;
-
-const EventInfo = styled.View`
-  flex-direction: row;
-`;
-
-const EventIcons = styled.View`
-  flex-direction: row;
-  justify-content: space-evenly;
-`;
-
-const Counts = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-`;
-
-const OwnerText = styled.Text`
-  margin-right: ${(props) => props.theme.space[3]};
-  color: ${(props) => props.theme.colors.ui.primary};
-  font-family: ${(props) => props.theme.fonts.body};
-`;
-
-const EventTitleText = styled.Text`
-  margin-right: ${(props) => props.theme.space[3]};
-  color: ${(props) => props.theme.colors.ui.primary};
-  font-family: ${(props) => props.theme.fonts.eventTitle};
-  font-size: ${(props) => props.theme.fontSizes.title};
-`;
-
-const EventDescription = styled.Text`
-  margin-right: ${(props) => props.theme.space[3]};
-  color: ${(props) => props.theme.colors.ui.primary};
-  font-family: ${(props) => props.theme.fonts.eventTitle};
-  font-size: ${(props) => props.theme.fontSizes.caption};
-`;
-
-const RatingRow = styled.View`
-  flex-direction: row;
-  align-items: center;
-  padding: ${(props) => props.theme.space[1]};
-`;
-
-const IconWithText = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
+import {  StyledCard } from "./event-card.styles";
+import {  CardTitle } from "./event-card.styles";
+import {  OwnerContainer } from "./event-card.styles";
+import {  AvatarImage } from "./event-card.styles";
+import {  CardCover } from "./event-card.styles";
+import {  CardContent } from "./event-card.styles";
+import {  EventInfo } from "./event-card.styles";
+import {  EventIcons } from "./event-card.styles";
+import {  Counts } from "./event-card.styles";
+import {  RatingRow } from "./event-card.styles";
+import {  IconWithText } from "./event-card.styles";
 
 export const EventCard = ({ event = {} }) => {
   const {
@@ -114,9 +47,9 @@ export const EventCard = ({ event = {} }) => {
               uri: profile_image,
             }}
           />
-          <OwnerText>{owner}</OwnerText>
+          <Text variant="body">{owner}</Text>
         </OwnerContainer>
-        <OwnerText>{updated_at}</OwnerText>
+        <Text variant="body">{updated_at}</Text>
       </CardTitle>
 
       <CardCover key={title} source={{ uri: image }} />
@@ -149,12 +82,15 @@ export const EventCard = ({ event = {} }) => {
         </Counts>
 
         <EventInfo>
-          <EventTitleText>
+          <Text variant="label">
             {title} - {event_date}
-          </EventTitleText>
+          </Text>
         </EventInfo>
         <View>
-          <EventDescription>{description}</EventDescription>
+          <Spacer position="top" size="medium">
+          <Text variant="body">{description}</Text>
+          </Spacer>
+          
         </View>
         <View>
           <Text># {tags}</Text>
