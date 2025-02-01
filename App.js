@@ -9,8 +9,6 @@ import { Text, View } from 'react-native';
 import { Button } from '@react-navigation/elements';
 import { SafeArea } from "./src/components/utils/safe-area.component";
 import Ionicons from '@expo/vector-icons/Ionicons'
-import AntDesign from '@expo/vector-icons/AntDesign';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 import {
   useFonts as useRaleway,
@@ -25,26 +23,28 @@ import {
 
 const Tab = createBottomTabNavigator();
 
+const TAB_ICON = {
+  Home: "home",
+  Add: "add-sharp",
+  Profile: "person"
+}
+const tabBarIcon = (iconName) => ({ size, color }) => (
+  <Ionicons name={iconName} size={size} color={color} />
+)
+
+const screenOptions = ({ route }) => {
+  const iconName = TAB_ICON[route.name];
+  return {
+    tabBarIcon: tabBarIcon(iconName),
+    tabBarActiveTintColor: '#47c6e0',
+    tabBarInactiveTintColor: 'gray',
+  }
+}
+
 function MyTabs() {
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
-          if (route.name === 'Home') {
-            iconName = 'home';
-          } else if (route.name === 'Add') {
-            iconName = 'add-sharp';
-          } else if (route.name === 'Profile') {
-            iconName = 'person';
-          }
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
-      })
+      screenOptions={screenOptions
       }
     >
       <Tab.Screen name="Home" component={EventsScreen} />
