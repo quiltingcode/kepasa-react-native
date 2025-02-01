@@ -14,13 +14,19 @@ const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
 
+const EventList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    padding: 16,
+  },
+})``;
+
 
 export const EventsScreen = () => (
   <SafeArea>
     <SearchContainer>
       <Searchbar />
     </SearchContainer>
-    <FlatList
+    <EventList
       data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, { name: 5 }, { name: 6 }, { name: 7 }, { name: 8 }]}
       renderItem={() => (
         <Spacer position="bottom" size="small">
@@ -28,7 +34,7 @@ export const EventsScreen = () => (
         </Spacer>
       )}
       keyExtractor={(item) => item.name}
-      contentContainerStyle={{ padding: 16 }}
+
     />
 
 
