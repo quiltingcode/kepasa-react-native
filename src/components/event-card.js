@@ -3,9 +3,9 @@ import styled from "styled-components/native";
 import { Avatar, Card, IconButton, MD3Colors } from "react-native-paper";
 import { StatusBar, StyleSheet, SafeAreaView, View } from "react-native";
 import { SvgXml } from "react-native-svg";
-import { Spacer } from "../components/spacer/spacer.component";
-import { Text } from "../components/typography/text.component";
-import star from "../../../../assets/star";
+import { Spacer } from "./spacer/spacer.component";
+import { Text } from "./typography/text.component";
+import star from "../../assets/star";
 import Svg, { Use, Image } from "react-native-svg";
 import {
   EventsCard,

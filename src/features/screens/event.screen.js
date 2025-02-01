@@ -1,14 +1,11 @@
 import React from "react";
 import styled from "styled-components/native";
 import { Searchbar } from "react-native-paper";
-import { StatusBar, FlatList, SafeAreaView } from "react-native";
-import { EventCard } from "../events/components/event-card";
-import { Spacer } from "../events/components/spacer/spacer.component";
-
-const SafeArea = styled(SafeAreaView)`
-  flex: 1;
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-`;
+import { FlatList } from "react-native";
+import { EventCard } from "../../components/event-card";
+import { Spacer } from "../../components/spacer/spacer.component";
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { SafeArea } from "../../components/utils/safe-area.component";
 
 const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
@@ -34,9 +31,6 @@ export const EventsScreen = () => (
         </Spacer>
       )}
       keyExtractor={(item) => item.name}
-
     />
-
-
   </SafeArea>
 );
