@@ -2,8 +2,9 @@ import styled from "styled-components/native";
 import { Avatar, Card, IconButton, MD3Colors } from "react-native-paper";
 
 // Styled components
-export const StyledCard = styled(Card)`
+export const EventsCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
+  margin-bottom: ${(props) => props.theme.space[3]};
 `;
 
 export const CardTitle = styled.View`

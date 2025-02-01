@@ -7,17 +7,20 @@ import { Spacer } from "../components/spacer/spacer.component";
 import { Text } from "../components/typography/text.component";
 import star from "../../../../assets/star";
 import Svg, { Use, Image } from "react-native-svg";
-import {  StyledCard } from "./event-card.styles";
-import {  CardTitle } from "./event-card.styles";
-import {  OwnerContainer } from "./event-card.styles";
-import {  AvatarImage } from "./event-card.styles";
-import {  CardCover } from "./event-card.styles";
-import {  CardContent } from "./event-card.styles";
-import {  EventInfo } from "./event-card.styles";
-import {  EventIcons } from "./event-card.styles";
-import {  Counts } from "./event-card.styles";
-import {  RatingRow } from "./event-card.styles";
-import {  IconWithText } from "./event-card.styles";
+import {
+  EventsCard,
+  CardTitle,
+  OwnerContainer,
+  AvatarImage,
+  CardCover,
+  CardContent,
+  EventInfo,
+  EventIcons,
+  Counts,
+  RatingRow,
+  IconWithText,
+} from "./event-card.styles";
+
 
 export const EventCard = ({ event = {} }) => {
   const {
@@ -38,7 +41,7 @@ export const EventCard = ({ event = {} }) => {
   console.log(ratingArray);
 
   return (
-    <StyledCard elevation={5}>
+    <EventsCard elevation={5}>
       <CardTitle>
         <OwnerContainer>
           <AvatarImage
@@ -88,25 +91,25 @@ export const EventCard = ({ event = {} }) => {
         </EventInfo>
         <View>
           <Spacer position="top" size="medium">
-          <Text variant="body">{description}</Text>
+            <Text variant="body">{description}</Text>
           </Spacer>
-          
+
         </View>
         <View>
           <Text># {tags}</Text>
         </View>
         <EventInfo>
           <Spacer position="bottom" size="small">
-          <RatingRow>
-            {ratingArray.map((index) => (
-              <SvgXml xml={star} width={20} height={20} key={index} />
-            ))}
-          </RatingRow>
+            <RatingRow>
+              {ratingArray.map((index) => (
+                <SvgXml xml={star} width={20} height={20} key={index} />
+              ))}
+            </RatingRow>
           </Spacer>
-         
+
         </EventInfo>
       </CardContent>
-    </StyledCard>
+    </EventsCard>
   );
 };
 
