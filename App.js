@@ -8,6 +8,9 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { Text, View } from 'react-native';
 import { Button } from '@react-navigation/elements';
 import { SafeArea } from "./src/components/utils/safe-area.component";
+import Ionicons from '@expo/vector-icons/Ionicons'
+import AntDesign from '@expo/vector-icons/AntDesign';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 import {
   useFonts as useRaleway,
@@ -24,11 +27,30 @@ const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'Home') {
+            iconName = 'home';
+          } else if (route.name === 'Add') {
+            iconName = 'add-sharp';
+          } else if (route.name === 'Profile') {
+            iconName = 'person';
+          }
+          // You can return any component that you like here!
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: 'tomato',
+        tabBarInactiveTintColor: 'gray',
+      })
+      }
+    >
       <Tab.Screen name="Home" component={EventsScreen} />
       <Tab.Screen name="Add" component={AddEventScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
-    </Tab.Navigator>
+    </ Tab.Navigator>
   );
 }
 
@@ -73,10 +95,6 @@ export default function App() {
   if (!ralewayLoaded || !latoLoaded || !oswaldLoaded) {
     return null;
   }
-
-
-
-
 
   return (
     <>
