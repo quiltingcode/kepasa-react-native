@@ -32,7 +32,7 @@ const tabBarIcon = (iconName) => ({ size, color }) => (
   <Ionicons name={iconName} size={size} color={color} />
 )
 
-const screenOptions = ({ route }) => {
+const createScreenOptions = ({ route }) => {
   const iconName = TAB_ICON[route.name];
   return {
     tabBarIcon: tabBarIcon(iconName),
@@ -44,8 +44,7 @@ const screenOptions = ({ route }) => {
 function MyTabs() {
   return (
     <Tab.Navigator
-      screenOptions={screenOptions
-      }
+      screenOptions={createScreenOptions}
     >
       <Tab.Screen name="Home" component={EventsScreen} />
       <Tab.Screen name="Add" component={AddEventScreen} />
