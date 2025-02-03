@@ -9,6 +9,7 @@ import { Text, View } from 'react-native';
 import { Button } from '@react-navigation/elements';
 import { SafeArea } from "./src/components/utils/safe-area.component";
 import Ionicons from '@expo/vector-icons/Ionicons'
+import { AuthProvider } from "./src/contexts/CurrentUserContext";
 
 import {
   useFonts as useRaleway,
@@ -66,6 +67,19 @@ function ProfileScreen() {
   );
 }
 
+function LoginScreen() {
+  const navigation = useNavigation();
+
+  return (
+    <SafeArea>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Profile Screen</Text>
+        <Button onPress={() => navigation.navigate('Login')}>Log in</Button>
+      </View>
+    </SafeArea>
+  );
+}
+
 function AddEventScreen() {
   const navigation = useNavigation();
 
@@ -98,9 +112,11 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <MyTabs />
-        </NavigationContainer>
+        <AuthProvider>
+          <NavigationContainer>
+            <MyTabs />
+          </NavigationContainer>
+        </AuthProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
