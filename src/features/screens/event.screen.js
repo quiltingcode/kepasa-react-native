@@ -6,6 +6,7 @@ import { EventCard } from "../../components/event-card";
 import { Spacer } from "../../components/spacer/spacer.component";
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { SafeArea } from "../../components/utils/safe-area.component";
+import { useAuth } from "../../contexts/CurrentUserContext";
 
 const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
