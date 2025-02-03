@@ -1,6 +1,8 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import React from "react";
 import { EventsScreen } from "./src/features/screens/event.screen";
+import { LoginScreen } from "./src/features/screens/login.screen";
+import { ProfileScreen } from "./src/features/screens/profile.screen";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -9,7 +11,7 @@ import { Text, View } from 'react-native';
 import { Button } from '@react-navigation/elements';
 import { SafeArea } from "./src/components/utils/safe-area.component";
 import Ionicons from '@expo/vector-icons/Ionicons'
-import { AuthProvider } from "./src/contexts/CurrentUserContext";
+import { AuthProvider, useAuth } from "./src/contexts/CurrentUserContext";
 
 import {
   useFonts as useRaleway,
@@ -21,6 +23,7 @@ import {
   Oswald_400Regular,
   Oswald_500Medium,
 } from "@expo-google-fonts/oswald";
+import { AddEventScreen } from "./src/features/screens/addevent.screen";
 
 const Tab = createBottomTabNavigator();
 
@@ -43,57 +46,28 @@ const createScreenOptions = ({ route }) => {
 }
 
 function MyTabs() {
+  const { currentUser } = useAuth();
+
   return (
     <Tab.Navigator
       screenOptions={createScreenOptions}
     >
       <Tab.Screen name="Home" component={EventsScreen} />
-      <Tab.Screen name="Add" component={AddEventScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Add" >
+        {() => (currentUser ? <AddEventScreen /> : <LoginScreen />)}
+      </Tab.Screen>
+      <Tab.Screen name="Profile">
+        {() => (currentUser ? <ProfileScreen /> : <LoginScreen />)}
+      </Tab.Screen>
     </ Tab.Navigator>
   );
 }
 
-function ProfileScreen() {
-  const navigation = useNavigation();
-
-  return (
-    <SafeArea>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Profile Screen</Text>
-        <Button onPress={() => navigation.navigate('Home')}>Go to Home</Button>
-      </View>
-    </SafeArea>
-  );
-}
-
-function LoginScreen() {
-  const navigation = useNavigation();
-
-  return (
-    <SafeArea>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Profile Screen</Text>
-        <Button onPress={() => navigation.navigate('Login')}>Log in</Button>
-      </View>
-    </SafeArea>
-  );
-}
-
-function AddEventScreen() {
-  const navigation = useNavigation();
-
-  return (
-    <SafeArea>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Add new event</Text>
-        <Button onPress={() => navigation.navigate('Home')}>Go to Home</Button>
-      </View>
-    </SafeArea>
-  );
-}
 
 export default function App() {
+
+
+
   const [ralewayLoaded] = useRaleway({
     Raleway_400Regular,
   });

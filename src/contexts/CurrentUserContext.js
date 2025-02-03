@@ -13,19 +13,27 @@ export const AuthProvider = ({ children }) => {
     // Function to check and set the current user
     const loadUser = async () => {
         const accessToken = await AsyncStorage.getItem("access_token");
+        console.log("🛠️ Access Token:", accessToken);
+
         if (accessToken) {
             try {
                 const tokenData = jwt_decode(accessToken);
+                console.log("📜 Decoded Token:", tokenData);
                 const userId = tokenData.user_id;
 
                 const { data } = await axiosRes.get(`api/auth/v1/login/${userId}/`);
+                console.log("✅ User Data from API:", data);
+
                 setCurrentUser(data);
             } catch (err) {
-                console.error("Error fetching user:", err);
+                console.error("❌ Error fetching user:", err);
                 logout();
             }
+        } else {
+            console.log("🚫 No access token found.");
         }
     };
+
 
     // Login function
     const login = async (email, password) => {
